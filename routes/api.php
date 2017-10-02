@@ -25,10 +25,14 @@ Route::get('/sendverification/{username}','UserController@sendVerification');
 Route::get('/register/verify/{token}/{date}/{id}','UserController@verify');
 //untuk login
 Route::post('/login','UserController@login');
-
 Route::group(['prefix' => 'v1','namespace' => 'API\V1'], function () {
 
 	// ======================================== Location ================================================= //
     Route::get('locations', 'Location\LocationController@index')->name('api.v1.locations');
-
-});
+  
+//add searching feature by location store
+Route::post("/location/{value}","LocationController@search");
+//add feature getting profile user
+Route::get('/profile','LocationController@getProfile');
+// add feature getting store by location
+Route::get('/jasaprint','LocationController@getJasaPrint');
