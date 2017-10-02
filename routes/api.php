@@ -25,3 +25,10 @@ Route::get('/sendverification/{username}','UserController@sendVerification');
 Route::get('/register/verify/{token}/{date}/{id}','UserController@verify');
 //untuk login
 Route::post('/login','UserController@login');
+
+Route::group(['prefix' => 'v1','namespace' => 'API\V1'], function () {
+
+	// ======================================== Location ================================================= //
+    Route::get('locations', 'Location\LocationController@index')->name('api.v1.locations');
+
+});
